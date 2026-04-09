@@ -85,4 +85,3 @@ def scrape():
             case "Zach Wheat":
                 player.name = "Zack Wheat"
     
-scrape()

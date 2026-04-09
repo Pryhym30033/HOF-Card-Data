@@ -32,4 +32,3 @@ def position():
     for player in players:
         player.pos = plyerPos[player.name]
     
-position()
