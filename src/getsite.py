@@ -84,4 +84,6 @@ def scrape():
                 player.name = "John Montgomery Ward"
             case "Zach Wheat":
                 player.name = "Zack Wheat"
+            case "Kirby Puckett":
+                player.frstYear = "1984"
     
