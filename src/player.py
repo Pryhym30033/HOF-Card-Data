@@ -6,6 +6,7 @@ class Player:
         self.HOFyear = HOFyear
         self.catagory = catagory
         self.rc = rc
+        self.pos = None
 
 players = []
 

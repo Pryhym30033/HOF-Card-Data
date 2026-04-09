@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from player import *
 
 def position():
 
@@ -18,13 +19,17 @@ def position():
 
     table = driver.find_elements(By.XPATH, "//table")
     rows = table[2].find_elements('tag name', 'tr')
+
+    plyerPos = {}
     
     for row in rows[1:]:
         name = row.find_element('tag name', 'th')
         
         posCell = row.find_elements('tag name', 'td')
+
+        plyerPos[name.text] = posCell[1].text
         
-        print(f"{name.text} {posCell[1].text}")
-           
+    for player in players:
+        player.pos = plyerPos[player.name]
     
 position()
