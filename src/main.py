@@ -1,28 +1,20 @@
-from player import *
-from getsite import *
-from position import *
-from table import MakeTable
-from year import year
+from .player import *
+from .getsite import *
+from .position import *
+from .table import MakeTable
+from .year import year
 import sys
 
 def main():
+    scrape()
+    position()
+
     if len(sys.argv) > 1:
         if sys.argv[1] == 'print':
             MakeTable()
-            return
         else:
-            year()
-            return
-    
+            year() 
     else:
-        return
-    
-    
+        print('no input')
     
 
-    
-if __name__ == "__main__":
-    scrape()
-    position()
-    main()
-    

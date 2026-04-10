@@ -1,4 +1,4 @@
-from player import players
+from .player import players
 import pandas as pd
 
 

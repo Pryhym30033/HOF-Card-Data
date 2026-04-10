@@ -1,0 +1,2 @@
+[console_scripts]
+hof = src.main:main

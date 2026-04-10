@@ -1,9 +1,6 @@
 import sys
-from player import players
+from .player import players
 
-
-
-year = sys.argv[1]
 
 output = []
 

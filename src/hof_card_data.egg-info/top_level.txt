@@ -1,0 +1,7 @@
+__init__
+getsite
+main
+player
+position
+table
+year

@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+hof_card_data.egg-info/PKG-INFO
+hof_card_data.egg-info/SOURCES.txt
+hof_card_data.egg-info/dependency_links.txt
+hof_card_data.egg-info/entry_points.txt
+hof_card_data.egg-info/top_level.txt
+src/__init__.py
+src/getsite.py
+src/main.py
+src/player.py
+src/position.py
+src/table.py
+src/year.py
