@@ -13,7 +13,7 @@ def main():
         if sys.argv[1] == 'print':
             MakeTable(sys.argv[2])
         else:
-            year() 
+            year(sys.argv[1]) 
     else:
         print('no input')
     

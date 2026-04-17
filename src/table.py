@@ -1,9 +1,6 @@
 import pandas as pd
 from pathlib import Path
 import json
- 
-win_user = "PCM30033"
-
 
 def safeInt(val):
     try:
@@ -12,6 +9,14 @@ def safeInt(val):
         return 0
 
 def MakeTable(year):
+    
+    win_user = input("Enter Computer UserName: ")
+    folder = Path(f"/mnt/c/Users/{win_user}")
+
+    while not folder.exists():
+        win_user = input("Wrong username, retry: ")
+        folder = Path(f"/mnt/c/Users/{win_user}")
+    
     with open("data.json", "r") as f:
         playerData = json.load(f)
 
@@ -58,4 +63,3 @@ def MakeTable(year):
         output.sort(key=lambda x: x["Name"])
         df = pd.DataFrame(output)
         df.to_excel(f"/mnt/c/Users/{win_user}/Desktop/{year}HOF.xlsx", index=False)
-
