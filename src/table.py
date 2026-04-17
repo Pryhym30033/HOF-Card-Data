@@ -1,8 +1,61 @@
-from .player import players
 import pandas as pd
+from pathlib import Path
+import json
+ 
+win_user = "PCM30033"
 
 
-def MakeTable():
-    playerData = [{"Name": u.name, "Role": u.catagory, "First Year": u.frstYear, "Position":u.pos, "Rookie Card":u.rc} for u in players]
-    df = pd.DataFrame(playerData)
-    df.to_excel("/mnt/c/Users/Pryhym/Desktop/HOF.xlsx", index=False)
+def safeInt(val):
+    try:
+        return int(val)
+    except (ValueError, TypeError):
+        return 0
+
+def MakeTable(year):
+    with open("data.json", "r") as f:
+        playerData = json.load(f)
+
+    if year == "all":
+        df = pd.DataFrame(playerData)
+        df.to_excel(f"/mnt/c/Users/{win_user}/Desktop/HOF.xlsx", index=False)
+
+    elif year == 'negro':
+        output = []
+        for player in playerData:
+            if player["Role"] == "Negro Leag.":
+                output.append({
+                    "Name" : player["Name"],
+                    "Position":player["Position"],
+                    "RC" : player["Rookie Card"]
+                })
+        output.sort(key=lambda x: x["Name"])
+        df = pd.DataFrame(output)
+        df.to_excel(f"/mnt/c/Users/{win_user}/Desktop/NegroHOF.xlsx", index=False)
+
+    elif year == "old":
+        output = []
+        for player in playerData:
+            if safeInt(player["Last Year"]) < 1920 and player["Role"] == 'Player':
+                output.append({
+                    "Name" : player["Name"],
+                    "Position":player["Position"],
+                    "RC" : player["Rookie Card"]
+                })
+        output.sort(key=lambda x: x["Name"])
+        df = pd.DataFrame(output)
+        df.to_excel(f"/mnt/c/Users/{win_user}/Desktop/oldHOF.xlsx", index=False)
+
+    else:
+        output = []
+        for player in playerData:
+            if player["Role"] == "Player":    
+                if safeInt(player["First Year"]) <= safeInt(year) and safeInt(player["Last Year"]) >= safeInt(year):
+                    output.append({
+                    "Name" : player["Name"],
+                    "Position":player["Position"],
+                    "RC" : player["Rookie Card"]
+                })  
+        output.sort(key=lambda x: x["Name"])
+        df = pd.DataFrame(output)
+        df.to_excel(f"/mnt/c/Users/{win_user}/Desktop/{year}HOF.xlsx", index=False)
+

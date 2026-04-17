@@ -14,9 +14,12 @@ __pycache__/
 dist/
 build/
 *.egg-info/google-chrome-stable_current_amd64.deb
+*.egg-info
+hof_card_data.egg-info/
 
 
 *.deb
 *.exe
 *.dmg
 *.iso
+*.json

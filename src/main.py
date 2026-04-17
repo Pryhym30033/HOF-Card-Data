@@ -11,7 +11,7 @@ def main():
 
     if len(sys.argv) > 1:
         if sys.argv[1] == 'print':
-            MakeTable()
+            MakeTable(sys.argv[2])
         else:
             year() 
     else:

@@ -1,3 +1,5 @@
+
+
 class Player:
     def __init__(self, name, frstYear, lstYear, HOFyear, catagory, rc):
         self.name = name
@@ -7,6 +9,7 @@ class Player:
         self.catagory = catagory
         self.rc = rc
         self.pos = None
+
 
 players = []
 

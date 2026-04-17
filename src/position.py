@@ -3,10 +3,14 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from pathlib import Path
 from .player import *
+from .adddata import makeJson
 
 def position():
-
+    if Path("data.json").exists():
+        return
+    
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
@@ -31,4 +35,6 @@ def position():
         
     for player in players:
         player.pos = plyerPos[player.name]
+
     
+    makeJson()
